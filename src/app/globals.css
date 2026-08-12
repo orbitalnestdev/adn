@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   ADN — Real Estate Investments · design tokens
+   Los valores se afinan contra el diseño de Figma; todo el sitio los consume
+   vía Tailwind (bg-surface, text-ink, font-display, …).
+   --------------------------------------------------------------------------- */
+@theme {
+  /* Superficies */
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f5f1;
+  --color-surface-dark: #1c1c1a;
+
+  /* Texto */
+  --color-ink: #1a1a18;
+  --color-ink-soft: #575751;
+  --color-ink-muted: #8c8c85;
+  --color-ink-invert: #f6f5f1;
+
+  /* Acento oliva */
+  --color-accent: #6f7a46;
+  --color-accent-hover: #5b6539;
+  --color-accent-soft: #e9ebe0;
+
+  /* Bordes */
+  --color-line: #e3e1da;
+  --color-line-strong: #cfccc2;
+
+  /* Tipografía */
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Ritmo vertical de secciones */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 9rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink-invert);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Kicker / eyebrow: label chico en versalitas con tracking amplio */
+  .text-eyebrow {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Números de paso (01, 02, …) */
+  .text-step {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
