@@ -520,7 +520,8 @@ export function TextBlocks({
             </div>
           </div>
         ))}
-        <div className="border-t border-line" />
+        {/* Sin regla de cierre: la dibuja el borde superior de la sección
+            siguiente, para no duplicar la línea. */}
       </Container>
     </section>
   );
