@@ -271,7 +271,6 @@ export function ProjectFeature({
 /* -------------------------------------------------------------------------- */
 
 export function SplitFeature({
-  eyebrow,
   title,
   body,
   image,
@@ -279,39 +278,48 @@ export function SplitFeature({
   reverse = false,
   cta,
 }: {
-  eyebrow?: string;
+  /** Admite saltos de línea con `\n` para respetar el quiebre del diseño. */
   title: string;
-  body: string[];
+  body: string;
   image: string;
   alt: string;
+  /** `true` coloca la imagen a la izquierda. */
   reverse?: boolean;
-  cta?: { label: string; href: string };
+  cta?: {
+    label: string;
+    href: string;
+    variant?: "deep" | "soft";
+    arrow?: boolean;
+  };
 }) {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-14 md:py-20">
       <Container>
-        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
           <div className={cn(reverse && "md:order-2")}>
-            {eyebrow ? <Eyebrow className="mb-6">{eyebrow}</Eyebrow> : null}
-            <Display>{title}</Display>
-            <div className="mt-7 space-y-5">
-              {body.map((paragraph) => (
-                <p key={paragraph} className="text-pretty leading-relaxed text-ink-soft">
-                  {paragraph}
-                </p>
-              ))}
-            </div>
+            <h2 className="font-display text-[1.75rem] leading-tight font-light whitespace-pre-line md:text-[2.75rem]">
+              {title}
+            </h2>
+
+            <p className="mt-6 max-w-[52ch] text-pretty text-sm leading-relaxed text-ink-soft">
+              {body}
+            </p>
+
             {cta ? (
-              <Button href={cta.href} variant="outline" className="mt-9">
+              <Button
+                href={cta.href}
+                variant={cta.variant ?? "deep"}
+                className="mt-8 px-6 py-2.5"
+              >
                 {cta.label}
-                <ArrowRight />
+                {cta.arrow ? <ArrowUpRight /> : null}
               </Button>
             ) : null}
           </div>
 
           <div
             className={cn(
-              "relative aspect-4/5 w-full overflow-hidden md:aspect-3/4",
+              "relative aspect-7/6 w-full overflow-hidden rounded-lg",
               reverse && "md:order-1",
             )}
           >
@@ -431,7 +439,7 @@ export function ValueGrid({
   items,
 }: {
   title: string;
-  items: { title: string; body: string }[];
+  items: { title: string; body: string; icon?: ReactNode }[];
 }) {
   return (
     <section className="py-16 md:py-24">
@@ -442,7 +450,10 @@ export function ValueGrid({
 
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
-            <div key={item.title} className="border-t border-line pt-5">
+            <div key={item.title} className="border-t border-line pt-6">
+              {item.icon ? (
+                <div className="mb-5 text-ink">{item.icon}</div>
+              ) : null}
               <h3 className="text-sm font-medium">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 {item.body}
