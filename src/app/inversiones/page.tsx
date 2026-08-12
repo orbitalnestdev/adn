@@ -1,11 +1,6 @@
 import Image from "next/image";
 
-import {
-  CallToAction,
-  PageHeader,
-  Steps,
-  ValueGrid,
-} from "@/components/sections";
+import { CallToAction, Steps, ValueGrid } from "@/components/sections";
 import { ArrowRight, Button, Container, Display, Eyebrow } from "@/components/ui";
 import { site } from "@/lib/site";
 
@@ -83,17 +78,28 @@ const oportunidades = [
 export default function InversionesPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Inversiones"
-        title="La evolución de la inversión inmobiliaria"
-        lead="Ágil, transparente y a tu alcance. Invertí en desarrollos de autor con el respaldo de un equipo que gestiona cada etapa."
-      />
+      <section className="pt-16 md:pt-24">
+        <Container>
+          <h1 className="font-display text-[clamp(3rem,9vw,7rem)] leading-none font-light">
+            Tasaciones
+          </h1>
 
-      <ValueGrid
-        eyebrow="Por qué ADN"
-        title="¿Por qué invertir con nosotros?"
-        items={porQue}
-      />
+          <p className="font-display mt-10 max-w-3xl text-[1.5rem] leading-snug font-light md:mt-14 md:text-[2rem]">
+            La evolución de la inversión inmobiliaria:
+            <br />
+            Ágil, transparente y a tu alcance.
+          </p>
+
+          {/* TODO: copy real del diseño (la captura recibida no era legible). */}
+          <p className="mt-8 max-w-[62ch] text-sm leading-relaxed text-ink-soft">
+            Invertí en desarrollos de autor con el respaldo de un equipo que
+            gestiona cada etapa: detección de la oportunidad, estructuración
+            financiera, ejecución de obra y desinversión.
+          </p>
+        </Container>
+      </section>
+
+      <ValueGrid title="¿Por qué invertir con nosotros?" items={porQue} />
 
       <section>
         <div className="relative aspect-16/10 w-full md:aspect-21/9">

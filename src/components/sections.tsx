@@ -84,8 +84,9 @@ export function LogoStrip({
   label,
 }: {
   /**
-   * Logos reales del diseño. Mientras no estén los archivos, se renderiza un
-   * placeholder con el nombre para conservar el layout.
+   * Logos del diseño. Colocar los archivos exportados en /public/logos y
+   * apuntar `src` a cada uno. Sin `src` se renderiza el nombre como
+   * placeholder, para conservar el layout.
    */
   logos: { name: string; src?: string }[];
   label?: string;
@@ -93,11 +94,9 @@ export function LogoStrip({
   if (logos.length === 0) return null;
 
   return (
-    <section className="bg-surface py-12 md:py-16">
+    <section className="bg-surface pt-14 pb-16 md:pt-20 md:pb-24">
       <Container>
-        {label ? (
-          <h2 className="mb-10 text-xs text-ink-soft">{label}</h2>
-        ) : null}
+        {label ? <h2 className="mb-10 text-xs text-ink-soft">{label}</h2> : null}
 
         <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
           {logos.map((logo) => (
@@ -106,9 +105,9 @@ export function LogoStrip({
                 <Image
                   src={logo.src}
                   alt={logo.name}
-                  width={160}
+                  width={180}
                   height={40}
-                  className="h-8 w-auto object-contain opacity-60 grayscale transition-opacity hover:opacity-100"
+                  className="h-7 w-auto object-contain md:h-8"
                 />
               ) : (
                 <span className="text-sm font-medium tracking-wide text-ink-muted">
@@ -428,24 +427,23 @@ export function Steps({
 /* -------------------------------------------------------------------------- */
 
 export function ValueGrid({
-  eyebrow,
   title,
   items,
 }: {
-  eyebrow?: string;
   title: string;
   items: { title: string; body: string }[];
 }) {
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-16 md:py-24">
       <Container>
-        {eyebrow ? <Eyebrow className="mb-6">{eyebrow}</Eyebrow> : null}
-        <Display className="max-w-3xl">{title}</Display>
+        <h2 className="font-display max-w-3xl text-[1.75rem] leading-tight font-light md:text-[2.25rem]">
+          {title}
+        </h2>
 
-        <div className="mt-14 grid gap-x-12 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
-            <div key={item.title} className="border-t border-line pt-6">
-              <h3 className="font-display text-2xl font-light">{item.title}</h3>
+            <div key={item.title} className="border-t border-line pt-5">
+              <h3 className="text-sm font-medium">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 {item.body}
               </p>
