@@ -1,3 +1,4 @@
+import { placeholderMarks } from "@/components/placeholder-logos";
 import {
   CallToAction,
   LogoStrip,
@@ -14,17 +15,11 @@ export const metadata = {
 };
 
 /**
- * TODO: reemplazar por los logos reales del diseño (agregar `src` apuntando a
- * los SVG en /public/logos). Sin `src` se renderiza el nombre como placeholder.
+ * TODO: reemplazar por los logos reales (dejar los SVG en /public/logos y
+ * cambiar `mark` por `src`). Hasta entonces se dibujan marcas de relleno,
+ * igual que el diseño de Figma, que también usa placeholders acá.
  */
-const partners = [
-  { name: "Partner 1" },
-  { name: "Partner 2" },
-  { name: "Partner 3" },
-  { name: "Partner 4" },
-  { name: "Partner 5" },
-  { name: "Partner 6" },
-];
+const partners = placeholderMarks.map((mark) => ({ name: "Logoipsum", mark }));
 
 const pasos = [
   {

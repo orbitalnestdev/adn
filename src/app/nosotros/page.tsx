@@ -76,7 +76,7 @@ export default function NosotrosPage() {
             </div>
 
             <div className="md:pt-6">
-              <h2 className="font-display text-[1.75rem] leading-tight font-light md:text-[2rem]">
+              <h2 className="font-display text-[2rem] leading-tight font-light md:text-[2.25rem]">
                 Quienes Somos
               </h2>
               <div className="mt-5 space-y-5 text-sm leading-relaxed text-ink-soft">

@@ -41,8 +41,8 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
-                    "text-sm transition-colors hover:text-accent",
-                    isActive(item.href) ? "text-accent" : "text-ink-soft",
+                    "text-sm font-medium transition-colors hover:text-accent",
+                    isActive(item.href) ? "text-accent" : "text-ink",
                   )}
                 >
                   {item.label}

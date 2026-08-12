@@ -85,10 +85,10 @@ export function LogoStrip({
 }: {
   /**
    * Logos del diseño. Colocar los archivos exportados en /public/logos y
-   * apuntar `src` a cada uno. Sin `src` se renderiza el nombre como
-   * placeholder, para conservar el layout.
+   * apuntar `src` a cada uno; eso tiene prioridad sobre `mark`, que dibuja
+   * una marca de relleno para conservar el layout mientras tanto.
    */
-  logos: { name: string; src?: string }[];
+  logos: { name: string; src?: string; mark?: ReactNode }[];
   label?: string;
 }) {
   if (logos.length === 0) return null;
@@ -99,8 +99,8 @@ export function LogoStrip({
         {label ? <h2 className="mb-10 text-xs text-ink-soft">{label}</h2> : null}
 
         <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
-          {logos.map((logo) => (
-            <li key={logo.name} className="flex items-center justify-center">
+          {logos.map((logo, index) => (
+            <li key={index} className="flex items-center justify-center">
               {logo.src ? (
                 <Image
                   src={logo.src}
@@ -110,8 +110,11 @@ export function LogoStrip({
                   className="h-7 w-auto object-contain md:h-8"
                 />
               ) : (
-                <span className="text-sm font-medium tracking-wide text-ink-muted">
-                  {logo.name}
+                <span className="flex items-center gap-2 text-ink">
+                  {logo.mark}
+                  <span className="text-base font-semibold tracking-tight">
+                    {logo.name}
+                  </span>
                 </span>
               )}
             </li>
@@ -166,7 +169,7 @@ export function StackedFeature({
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <h2 className="font-display max-w-3xl text-balance text-[2rem] leading-tight font-light md:text-[2.75rem]">
+        <h2 className="font-display max-w-3xl text-balance text-[2.25rem] leading-tight font-light md:text-[3.25rem]">
           {title}
         </h2>
 
@@ -219,7 +222,7 @@ export function ProjectFeature({
         <div className="grid gap-10 md:grid-cols-2 md:gap-12">
           {/* Columna de texto */}
           <div className={cn("border-t border-line pt-10", reverse && "md:order-2")}>
-            <h2 className="font-display text-[2.75rem] leading-none font-light tracking-[0.01em] md:text-[3.5rem]">
+            <h2 className="font-display text-[3rem] leading-none font-light tracking-[0.01em] md:text-[4rem]">
               {title}
             </h2>
 
@@ -297,7 +300,7 @@ export function SplitFeature({
       <Container>
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
           <div className={cn(reverse && "md:order-2")}>
-            <h2 className="font-display text-[1.75rem] leading-tight font-light whitespace-pre-line md:text-[2.75rem]">
+            <h2 className="font-display text-[2rem] leading-tight font-light whitespace-pre-line md:text-[3.25rem]">
               {title}
             </h2>
 
@@ -397,7 +400,7 @@ export function Steps({
       <Container>
         <div className="border-t border-line pt-10 md:pt-14">
           <div className="flex items-start justify-between gap-8">
-            <h2 className="font-display text-[2rem] leading-[1.15] font-light whitespace-pre-line md:text-[3rem]">
+            <h2 className="font-display text-[2.25rem] leading-[1.15] font-light whitespace-pre-line md:text-[3.5rem]">
               {title}
             </h2>
             {cta ? (
@@ -444,7 +447,7 @@ export function ValueGrid({
   return (
     <section className="py-16 md:py-24">
       <Container>
-        <h2 className="font-display max-w-3xl text-[1.75rem] leading-tight font-light md:text-[2.25rem]">
+        <h2 className="font-display max-w-3xl text-[2rem] leading-tight font-light md:text-[2.5rem]">
           {title}
         </h2>
 
@@ -483,7 +486,7 @@ export function CallToAction({
     <section id={id} className="scroll-mt-24">
       <Container>
         <div className="flex flex-col items-center border-t border-line py-20 text-center md:py-28">
-          <h2 className="font-display text-[2rem] leading-tight font-light text-balance md:text-[3rem]">
+          <h2 className="font-display text-[2.25rem] leading-tight font-light text-balance md:text-[3.5rem]">
             {title}
           </h2>
           <Button href={cta.href} variant="deep" className="mt-10">
@@ -511,7 +514,7 @@ export function TextBlocks({
         {blocks.map((block) => (
           <div key={block.title} className="border-t border-line py-10 md:py-12">
             <div className="md:pl-6">
-              <h2 className="font-display text-[1.5rem] leading-tight font-light md:text-[2rem]">
+              <h2 className="font-display text-[1.75rem] leading-tight font-light md:text-[2.25rem]">
                 {block.title}
               </h2>
               <p className="mt-5 max-w-[78ch] text-pretty text-sm leading-relaxed text-ink-soft">
