@@ -47,8 +47,8 @@ export default function Home() {
       <WordmarkHero
         strong="ADN"
         light="Urban"
-        image="/images/edificio-verde.jpg"
-        alt="Fachada de un edificio residencial con balcones y vegetación"
+        image="/images/paramento-calle.png"
+        alt="Vista desde la calle del desarrollo Paramento, rodeado de árboles"
         priority
       />
 

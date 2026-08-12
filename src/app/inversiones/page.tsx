@@ -90,8 +90,8 @@ export default function InversionesPage() {
         <Container>
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-lg sm:aspect-2/1">
             <Image
-              src="/images/fachada-balcones.png"
-              alt="Detalle de balcones de un desarrollo en construcción"
+              src="/images/edificio-verde.jpg"
+              alt="Fachada de un desarrollo residencial con terrazas y vegetación"
               fill
               sizes="(min-width: 1200px) 1120px, 100vw"
               className="object-cover"
