@@ -105,13 +105,15 @@ export function Lead({
 /*  Button                                                                     */
 /* -------------------------------------------------------------------------- */
 
-type ButtonVariant = "solid" | "outline" | "ghost";
+type ButtonVariant = "solid" | "deep" | "soft" | "outline" | "ghost";
 
 const buttonBase =
-  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex items-center justify-center gap-1.5 rounded-full px-7 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 const buttonVariants: Record<ButtonVariant, string> = {
   solid: "bg-accent text-ink-invert hover:bg-accent-hover",
+  deep: "bg-accent-deep text-white hover:bg-accent-hover",
+  soft: "bg-accent-soft text-accent-hover hover:bg-accent hover:text-ink-invert",
   outline:
     "border border-line-strong text-ink hover:border-accent hover:text-accent",
   ghost: "text-ink hover:text-accent",
@@ -143,6 +145,25 @@ export function Button({
 /* -------------------------------------------------------------------------- */
 /*  Arrow                                                                      */
 /* -------------------------------------------------------------------------- */
+
+export function ArrowUpRight({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden="true"
+      className={cn("size-3.5", className)}
+    >
+      <path
+        d="M6.5 13.5 13.5 6.5m0 0H7.75m5.75 0v5.75"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function ArrowRight({ className }: { className?: string }) {
   return (

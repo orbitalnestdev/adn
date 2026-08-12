@@ -1,9 +1,10 @@
 import {
   CallToAction,
-  FullBleedImage,
-  ImageHero,
-  SplitFeature,
+  LogoStrip,
+  ProjectFeature,
+  StackedFeature,
   Steps,
+  WordmarkHero,
 } from "@/components/sections";
 import { site } from "@/lib/site";
 
@@ -12,77 +13,80 @@ export const metadata = {
   description: site.description,
 };
 
+/**
+ * TODO: reemplazar por los logos reales del diseño (agregar `src` apuntando a
+ * los SVG en /public/logos). Sin `src` se renderiza el nombre como placeholder.
+ */
+const partners = [
+  { name: "Partner 1" },
+  { name: "Partner 2" },
+  { name: "Partner 3" },
+  { name: "Partner 4" },
+  { name: "Partner 5" },
+  { name: "Partner 6" },
+];
+
 const pasos = [
   {
-    title: "Conversamos",
-    body: "Entendemos tu momento, tu presupuesto y qué buscás en una propiedad.",
+    title: "Primera reunión",
+    body: "Escuchamos tus ideas, analizamos el espacio y entendemos tus necesidades para definir los objetivos del proyecto.",
   },
   {
-    title: "Curamos opciones",
-    body: "Seleccionamos unidades y proyectos que realmente encajan con tu perfil.",
+    title: "Diseño y desarrollo",
+    body: "Desarrollamos la propuesta arquitectónica, planos y visualizaciones, refinando cada detalle hasta lograr la solución ideal.",
   },
   {
-    title: "Acompañamos el cierre",
-    body: "Escritura, financiación y entrega, con seguimiento en cada paso.",
+    title: "Ejecución y entrega",
+    body: "Supervisamos la obra y coordinamos cada etapa para asegurar un resultado fiel al proyecto, dentro de los tiempos y estándares de calidad.",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <ImageHero
-        wordmark="ADN Urban"
-        subtitle="Arquitectura residencial de autor en Buenos Aires. Desarrollos pensados para durar."
+      <WordmarkHero
+        strong="ADN"
+        light="Urban"
         image="/images/edificio-verde.jpg"
         alt="Fachada de un edificio residencial con balcones y vegetación"
         priority
       />
 
-      <SplitFeature
-        eyebrow="Nuestra mirada"
+      <LogoStrip label="Trusted by:" logos={partners} />
+
+      <StackedFeature
         title="Arquitectura y diseño para el bienestar"
         body={[
           "Cada proyecto nace de una lectura precisa del terreno, del barrio y de quienes van a habitarlo. Trabajamos con materiales nobles, luz natural y espacios verdes integrados.",
-          "El resultado son edificios que envejecen bien: eficientes, sobrios y profundamente vivibles.",
         ]}
+        image="/images/edificio-verde.jpg"
+        alt="Fachada de un edificio residencial con terrazas y vegetación"
+      />
+
+      <ProjectFeature
+        title="TALEYA"
+        body="El barrio, consolidado como nuevo polo gastronómico, se encuentra situado entre dos líneas ferroviarias, múltiples colectivos y muy cercano a la Av. General Paz por lo que posee una excelente conectividad con la ciudad."
+        features={[
+          "Comodidad y Luz natural",
+          "Equipamiento completo",
+          "Ammenities",
+          "Departamentos",
+        ]}
+        cta={{ label: "Ver más", href: "/inversiones" }}
         image="/images/fachada-balcones.png"
-        alt="Detalle de balcones con vegetación en un edificio residencial"
-        cta={{ label: "Conocé nuestro enfoque", href: "/nosotros" }}
-      />
-
-      <FullBleedImage
-        image="/images/paramento-calle.png"
-        alt="Vista desde la calle de un edificio residencial rodeado de árboles"
-        caption="Paramento — Buenos Aires"
-      />
-
-      <SplitFeature
-        eyebrow="Proyecto destacado"
-        title="Paramento"
-        reverse
-        body={[
-          "Un edificio de escala doméstica sobre una avenida arbolada. Hormigón visto, terrazas profundas y unidades de uno a tres ambientes.",
-          "Diseñado para que cada departamento tenga expansión propia y ventilación cruzada.",
-        ]}
-        image="/images/fachada-hormigon.png"
-        alt="Balcones de hormigón visto con vegetación"
-        cta={{ label: "Ver oportunidades", href: "/inversiones" }}
+        alt="Fachada del edificio TALEYA con balcones y vegetación"
       />
 
       <Steps
-        eyebrow="Cómo trabajamos"
-        title="Tu compra, hecha a medida"
-        lead="No vendemos metros cuadrados: acompañamos decisiones. Un proceso corto, claro y sin sorpresas."
+        title={"Tu proyecto,\ndiseñado a medida."}
+        cta={{ label: "Ver más", href: "/inversiones" }}
         steps={pasos}
       />
 
       <CallToAction
         id="contacto"
-        eyebrow="Hablemos"
         title="Conectá con nosotros"
-        body="Contanos qué estás buscando y te respondemos con opciones concretas."
-        primary={{ label: "Escribinos", href: `mailto:${site.email}` }}
-        secondary={{ label: "Ver inversiones", href: "/inversiones" }}
+        cta={{ label: "Saber más", href: `mailto:${site.email}` }}
       />
     </>
   );

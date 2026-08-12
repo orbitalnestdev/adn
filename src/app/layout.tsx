@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Archivo, Cormorant_Garamond, Inter } from "next/font/google";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -17,6 +17,14 @@ const cormorant = Cormorant_Garamond({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Grotesca con eje de ancho variable: el wordmark del hero es extendido.
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  axes: ["wdth"],
   display: "swap",
 });
 
@@ -41,7 +49,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es-AR" className={`${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang="es-AR"
+      className={`${cormorant.variable} ${inter.variable} ${archivo.variable}`}
+    >
       <body className="flex min-h-dvh flex-col antialiased">
         <Header />
         <main className="flex-1">{children}</main>

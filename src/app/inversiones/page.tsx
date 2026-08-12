@@ -107,12 +107,7 @@ export default function InversionesPage() {
         </div>
       </section>
 
-      <Steps
-        eyebrow="El proceso"
-        title="¿Cómo funciona?"
-        lead="Cuatro etapas, sin letra chica. Desde la primera charla hasta el cobro del retorno."
-        steps={pasos}
-      />
+      <Steps title="¿Cómo funciona?" steps={pasos} columns={4} />
 
       <section className="py-20 md:py-28">
         <Container>
@@ -184,11 +179,8 @@ export default function InversionesPage() {
 
       <CallToAction
         id="contacto"
-        eyebrow="Hablemos"
-        title="Empecemos por una conversación"
-        body="Sin compromiso. Te mostramos números reales de proyectos en curso."
-        primary={{ label: "Escribinos", href: `mailto:${site.email}` }}
-        secondary={{ label: "Conocer el equipo", href: "/nosotros" }}
+        title="Conectá con nosotros"
+        cta={{ label: "Saber más", href: `mailto:${site.email}` }}
       />
     </>
   );
