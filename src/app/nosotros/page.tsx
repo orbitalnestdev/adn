@@ -66,7 +66,7 @@ export default function NosotrosPage() {
           <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-[1.7fr_1fr] md:gap-14">
             <div className="relative aspect-3/2 w-full overflow-hidden rounded-lg">
               <Image
-                src="/images/equipo.png"
+                src="/images/equipo.webp"
                 alt="Retrato grupal del equipo de ADN"
                 fill
                 priority

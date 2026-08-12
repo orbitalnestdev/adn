@@ -90,7 +90,7 @@ export default function InversionesPage() {
         <Container>
           <div className="relative aspect-4/3 w-full overflow-hidden rounded-lg sm:aspect-2/1">
             <Image
-              src="/images/edificio-verde.jpg"
+              src="/images/edificio-verde.webp"
               alt="Fachada de un desarrollo residencial con terrazas y vegetación"
               fill
               sizes="(min-width: 1200px) 1120px, 100vw"
@@ -111,7 +111,7 @@ export default function InversionesPage() {
         title={"Oportunidades\nAbiertas"}
         body="Conocé nuestros proyectos activos, consultá las tasas de retorno estimadas e invertí de forma directa e inmediata."
         cta={{ label: "Proyectos", href: `mailto:${site.email}`, arrow: true }}
-        image="/images/fachada-hormigon.png"
+        image="/images/fachada-hormigon.webp"
         alt="Balcones de hormigón visto con vegetación"
       />
 
@@ -124,7 +124,7 @@ export default function InversionesPage() {
           href: `mailto:${site.email}`,
           variant: "soft",
         }}
-        image="/images/asesoramiento.png"
+        image="/images/asesoramiento.webp"
         alt="Dos personas dándose la mano al cerrar un acuerdo"
       />
     </>

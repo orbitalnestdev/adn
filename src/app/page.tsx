@@ -42,7 +42,7 @@ export default function Home() {
       <WordmarkHero
         strong="ADN"
         light="Urban"
-        image="/images/paramento-calle.png"
+        image="/images/paramento-calle.webp"
         alt="Vista desde la calle del desarrollo Paramento, rodeado de árboles"
         priority
       />
@@ -54,7 +54,7 @@ export default function Home() {
         body={[
           "Cada proyecto nace de una lectura precisa del terreno, del barrio y de quienes van a habitarlo. Trabajamos con materiales nobles, luz natural y espacios verdes integrados.",
         ]}
-        image="/images/edificio-verde.jpg"
+        image="/images/edificio-verde.webp"
         alt="Fachada de un edificio residencial con terrazas y vegetación"
       />
 
@@ -68,7 +68,7 @@ export default function Home() {
           "Departamentos",
         ]}
         cta={{ label: "Ver más", href: "/inversiones" }}
-        image="/images/fachada-balcones.png"
+        image="/images/fachada-balcones.webp"
         alt="Fachada del edificio TALEYA con balcones y vegetación"
       />
 
